@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DET International Publicity Priorities</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f8f9fa;
+    --surface2: #f1f3f5;
+    --border: #e0e4e9;
+    --text: #0d1117;
+    --muted: #6b7685;
+    --accent: #006AC3;
+    --accent-light: #e8f1fb;
+
+    --high: #0d1117;
+    --medium: #6b7685;
+    --low: #adb5bd;
+    --other: #006AC3;
+
+    --high-bg: #f8f9fa;
+    --medium-bg: #f8f9fa;
+    --low-bg: #f8f9fa;
+    --other-bg: #e8f1fb;
+
+    --high-strip: #0d1117;
+    --medium-strip: #adb5bd;
+    --low-strip: #dee2e6;
+    --other-strip: #006AC3;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 14px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 32px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+
+  .logo-area h1 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+
+  .logo-area .subtitle {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 3px;
+    letter-spacing: 0.2px;
+  }
+
+  .header-meta {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .meta-pill {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .confidential-badge {
+    border: 1px solid #e9b8bb;
+    background: #fdf3f3;
+    border-radius: 4px;
+    padding: 3px 9px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #b94040;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ── CONTROLS ── */
+  .controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-bottom: 14px;
+  }
+
+  .search-box {
+    flex: 1;
+    min-width: 180px;
+    max-width: 260px;
+    position: relative;
+  }
+
+  .search-box input {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 7px 10px 7px 32px;
+    color: var(--text);
+    font-size: 12px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .search-box input:focus { border-color: var(--accent); }
+  .search-box input::placeholder { color: var(--muted); }
+
+  .search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 12px;
+    pointer-events: none;
+  }
+
+  .filter-group {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .filter-label {
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+    margin-right: 2px;
+  }
+
+  .filter-btn {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 4px 9px;
+    font-size: 11px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.12s;
+    white-space: nowrap;
+    font-family: inherit;
+  }
+
+  .filter-btn:hover { border-color: var(--accent); color: var(--text); }
+  .filter-btn.active { background: var(--text); border-color: var(--text); color: #fff; font-weight: 600; }
+  .filter-btn.active-accent { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+
+  .sep { width: 1px; height: 20px; background: var(--border); }
+
+  /* ── VIEW TOGGLE ── */
+  .view-toggle {
+    display: flex;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-left: auto;
+  }
+
+  .view-btn {
+    padding: 5px 12px;
+    font-size: 11px;
+    color: var(--muted);
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    transition: all 0.12s;
+    font-family: inherit;
+  }
+
+  .view-btn.active { background: var(--bg); color: var(--text); font-weight: 600; }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 32px;
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .stat-item {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .stat-num {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+    letter-spacing: -0.5px;
+  }
+
+  .stat-num.accent { color: var(--accent); }
+
+  .stat-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  /* ── MAIN ── */
+  .main { padding: 24px 32px 40px; }
+
+  /* ── QUARTER ── */
+  .quarter-section { margin-bottom: 36px; }
+
+  .quarter-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .quarter-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3px 8px;
+  }
+
+  .quarter-months {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .quarter-line { flex: 1; height: 1px; background: var(--border); }
+
+  .quarter-count {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* ── MONTH GRID ── */
+  .month-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .month-col {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .month-header {
+    padding: 8px 12px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.3px;
+  }
+
+  .month-body { padding: 8px; }
+
+  /* ── TITLE CARDS ── */
+  .title-card {
+    border-radius: 5px;
+    padding: 7px 9px;
+    margin-bottom: 5px;
+    border-left: 3px solid transparent;
+    background: var(--surface);
+    transition: box-shadow 0.1s;
+    position: relative;
+  }
+
+  .title-card:hover { box-shadow: 0 1px 6px rgba(0,0,0,0.08); }
+  .title-card:last-child { margin-bottom: 0; }
+
+  .priority-high   { border-left-color: var(--high-strip);   background: var(--high-bg); }
+  .priority-medium { border-left-color: var(--medium-strip); background: var(--medium-bg); }
+  .priority-low    { border-left-color: var(--low-strip);    background: var(--low-bg); }
+  .priority-other  { border-left-color: var(--other-strip);  background: var(--other-bg); }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+
+  .card-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.35;
+    flex: 1;
+  }
+
+  .card-date {
+    font-size: 10px;
+    color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-weight: 500;
+  }
+
+  .card-meta {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .network-tag {
+    font-size: 9px;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    background: var(--surface2);
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+
+  /* accent network tag for Studios/Pay1 */
+  .priority-other .network-tag {
+    background: var(--accent-light);
+    color: var(--accent);
+    border-color: #b8d4ef;
+  }
+
+  .region-tags { display: flex; gap: 3px; flex-wrap: wrap; }
+
+  .region-tag {
+    font-size: 9px;
+    padding: 1px 4px;
+    border-radius: 3px;
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+
+  /* ── TABLE VIEW ── */
+  .table-view { display: none; }
+  .table-view.visible { display: block; }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  .data-table th {
+    background: var(--surface);
+    padding: 9px 12px;
+    text-align: left;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--muted);
+    border-bottom: 2px solid var(--border);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .data-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+    color: var(--text);
+  }
+
+  .data-table tr:hover td { background: var(--surface); }
+
+  .priority-badge {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  .badge-high  { background: #0d1117; color: #fff; }
+  .badge-medium { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+  .badge-low   { background: var(--surface2); color: var(--low); border: 1px solid var(--border); }
+  .badge-other { background: var(--accent-light); color: var(--accent); }
+
+  /* ── LEGEND ── */
+  .legend {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 14px 32px;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .legend-group { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .legend-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; }
+  .legend-item  { display: flex; gap: 5px; align-items: center; font-size: 11px; color: var(--muted); }
+  .legend-strip { width: 12px; height: 3px; border-radius: 2px; }
+
+  .legal {
+    margin-left: auto;
+    font-size: 10px;
+    color: var(--muted);
+  }
+
+  /* ── EMPTY ── */
+  .empty-state {
+    text-align: center;
+    padding: 24px 12px;
+    color: var(--muted);
+    font-size: 11px;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    .header { position: static; }
+    .controls, .stats-bar, .view-toggle { display: none !important; }
+    body { font-size: 10px; }
+    .month-grid { gap: 6px; }
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">
+    <div class="logo-area">
+      <h1>DET International Publicity Priorities</h1>
+      <div class="subtitle">Disney Entertainment Television · Global Planning Calendar · FY26–FY27</div>
+    </div>
+    <div class="header-meta">
+      <div class="meta-pill">FY26 Q1 → FY27 Q1</div>
+      <div class="meta-pill" id="total-count">—</div>
+      <div class="confidential-badge">Confidential</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="search-box">
+      <span class="search-icon">⌕</span>
+      <input type="text" id="search-input" placeholder="Search titles…" oninput="applyFilters()">
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="filter-group">
+      <span class="filter-label">Region</span>
+      <button class="filter-btn active-accent" data-filter="region" data-value="ALL" onclick="setFilter('region','ALL',this)">All</button>
+      <button class="filter-btn" data-filter="region" data-value="US"   onclick="setFilter('region','US',this)">US</button>
+      <button class="filter-btn" data-filter="region" data-value="EMEA" onclick="setFilter('region','EMEA',this)">EMEA</button>
+      <button class="filter-btn" data-filter="region" data-value="LATAM" onclick="setFilter('region','LATAM',this)">LATAM</button>
+      <button class="filter-btn" data-filter="region" data-value="APAC" onclick="setFilter('region','APAC',this)">APAC</button>
+      <button class="filter-btn" data-filter="region" data-value="AUNZ" onclick="setFilter('region','AUNZ',this)">AU/NZ</button>
+      <button class="filter-btn" data-filter="region" data-value="CA"   onclick="setFilter('region','CA',this)">CA</button>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="filter-group">
+      <span class="filter-label">Priority</span>
+      <button class="filter-btn active" data-filter="priority" data-value="ALL"    onclick="setFilter('priority','ALL',this)">All</button>
+      <button class="filter-btn" data-filter="priority" data-value="high"   onclick="setFilter('priority','high',this)">High</button>
+      <button class="filter-btn" data-filter="priority" data-value="medium" onclick="setFilter('priority','medium',this)">Medium</button>
+      <button class="filter-btn" data-filter="priority" data-value="low"    onclick="setFilter('priority','low',this)">Low</button>
+      <button class="filter-btn" data-filter="priority" data-value="other"  onclick="setFilter('priority','other',this)">Studios / Pay 1</button>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="filter-group">
+      <span class="filter-label">Network</span>
+      <button class="filter-btn active" data-filter="network" data-value="ALL"        onclick="setFilter('network','ALL',this)">All</button>
+      <button class="filter-btn" data-filter="network" data-value="ABC"        onclick="setFilter('network','ABC',this)">ABC</button>
+      <button class="filter-btn" data-filter="network" data-value="Hulu"       onclick="setFilter('network','Hulu',this)">Hulu</button>
+      <button class="filter-btn" data-filter="network" data-value="FX"         onclick="setFilter('network','FX',this)">FX</button>
+      <button class="filter-btn" data-filter="network" data-value="DBT"        onclick="setFilter('network','DBT',this)">Disney+</button>
+      <button class="filter-btn" data-filter="network" data-value="NatGeo"     onclick="setFilter('network','NatGeo',this)">NatGeo</button>
+      <button class="filter-btn" data-filter="network" data-value="Theatrical" onclick="setFilter('network','Theatrical',this)">Theatrical</button>
+      <button class="filter-btn" data-filter="network" data-value="Pay 1"      onclick="setFilter('network','Pay 1',this)">Pay 1</button>
+    </div>
+
+    <div class="view-toggle">
+      <button class="view-btn active" id="btn-calendar" onclick="setView('calendar')">Calendar</button>
+      <button class="view-btn" id="btn-table" onclick="setView('table')">Table</button>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item"><span class="stat-num accent" id="stat-total">—</span> titles</div>
+  <div class="stat-item"><span class="stat-dot" style="background:var(--high-strip)"></span><span class="stat-num" id="stat-high">—</span> High</div>
+  <div class="stat-item"><span class="stat-dot" style="background:var(--medium-strip)"></span><span class="stat-num" id="stat-med">—</span> Medium</div>
+  <div class="stat-item"><span class="stat-dot" style="background:var(--low-strip)"></span><span class="stat-num" id="stat-low">—</span> Low</div>
+  <div class="stat-item"><span class="stat-dot" style="background:var(--other-strip)"></span><span class="stat-num" id="stat-other">—</span> Studios / Pay 1</div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+  <div id="calendar-view"></div>
+  <div class="table-view" id="table-view">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Title</th><th>Network</th><th>Quarter</th><th>Date</th>
+          <th>Priority</th><th>Regions</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div class="legend">
+  <div class="legend-group">
+    <span class="legend-label">Priority</span>
+    <div class="legend-item"><div class="legend-strip" style="background:var(--high-strip)"></div> High (Tier 1–2)</div>
+    <div class="legend-item"><div class="legend-strip" style="background:var(--medium-strip)"></div> Medium (Tier 3–4)</div>
+    <div class="legend-item"><div class="legend-strip" style="background:var(--low-strip)"></div> Low (Tier 5–6)</div>
+    <div class="legend-item"><div class="legend-strip" style="background:var(--other-strip)"></div> Studios / Pay 1</div>
+  </div>
+  <div class="legal">CONFIDENTIAL · NOT FOR DISTRIBUTION · Disney Entertainment Television · Planning purposes only</div>
+</div>
+
+<script>
+// ─────────────────────────────────────────────
+// DATA  ← edit this array to update the calendar
+// ─────────────────────────────────────────────
+const TITLES = [
+  // FY26 Q1 (Oct–Dec)
+  { title:"Abbott S5", network:"ABC", date:"10/1", month:"Oct", quarter:"FY26 Q1", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Shifting Gears S2", network:"ABC", date:"10/1", month:"Oct", quarter:"FY26 Q1", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"9-1-1 S9", network:"ABC", date:"10/9", month:"Oct", quarter:"FY26 Q1", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"9-1-1 Nashville", network:"ABC", date:"10/9", month:"Oct", quarter:"FY26 Q1", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Grey's Anatomy S22", network:"ABC", date:"10/9", month:"Oct", quarter:"FY26 Q1", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"All's Fair S2", network:"Hulu", date:"Oct TBC", month:"Oct", quarter:"FY26 Q1", priority:"high", regions:["US"] },
+  { title:"Swipe Right on the Devil", network:"Hulu", date:"Oct TBC", month:"Oct", quarter:"FY26 Q1", priority:"medium", regions:["US"] },
+  { title:"The Swan", network:"Hulu", date:"Nov TBC", month:"Nov", quarter:"FY26 Q1", priority:"medium", regions:["US"] },
+  { title:"Andy Samberg Stand-Up Special", network:"Hulu", date:"Nov TBC", month:"Nov", quarter:"FY26 Q1", priority:"medium", regions:["US"] },
+  { title:"Only Murders in the Building S6", network:"Hulu", date:"Nov TBC", month:"Nov", quarter:"FY26 Q1", priority:"high", regions:["US"] },
+  { title:"Preppy Murder", network:"Hulu", date:"Nov TBC", month:"Nov", quarter:"FY26 Q1", priority:"medium", regions:["US"] },
+  { title:"Percy Jackson S3", network:"DBT", date:"Dec TBC", month:"Dec", quarter:"FY26 Q1", priority:"high", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"The Spot", network:"Hulu", date:"Dec TBC", month:"Dec", quarter:"FY26 Q1", priority:"high", regions:["US"] },
+  { title:"Mickey Mouse Clubhouse+ S2", network:"DBT", date:"Oct TBC", month:"Oct", quarter:"FY26 Q1", priority:"medium", regions:["US"] },
+  { title:"Family Guy Holiday Specials", network:"Hulu", date:"Oct/Nov TBC", month:"Oct", quarter:"FY26 Q1", priority:"low", regions:["US"] },
+  { title:"American Horror Story S13", network:"FX", date:"Oct TBC", month:"Oct", quarter:"FY26 Q1", priority:"high", regions:["US","EMEA","LATAM","CA"] },
+  { title:"The Kardashians S8", network:"Hulu", date:"Oct TBC", month:"Oct", quarter:"FY26 Q1", priority:"high", regions:["US"] },
+  { title:"Africa: Earth's Wild Home", network:"NatGeo", date:"10/3", month:"Oct", quarter:"FY26 Q1", priority:"medium", regions:["US"] },
+  { title:"Carl Sagan: We Are Made of Star Stuff", network:"NatGeo", date:"10/5", month:"Oct", quarter:"FY26 Q1", priority:"medium", regions:["US"] },
+  { title:"Wolves Up Close with Bertie Gregory", network:"NatGeo", date:"11/9", month:"Nov", quarter:"FY26 Q1", priority:"medium", regions:["US"] },
+  { title:"Wandance", network:"Local", date:"10/9", month:"Oct", quarter:"FY26 Q1", priority:"high", regions:["APAC"] },
+  { title:"Would You Marry Me", network:"Local", date:"10/10", month:"Oct", quarter:"FY26 Q1", priority:"high", regions:["APAC"] },
+  { title:"Twisted Wonderland S1", network:"Local", date:"10/29", month:"Oct", quarter:"FY26 Q1", priority:"high", regions:["APAC"] },
+  { title:"The Manipulated", network:"Local", date:"11/5", month:"Nov", quarter:"FY26 Q1", priority:"high", regions:["APAC"] },
+  { title:"Who is Seventeen", network:"Local", date:"11/7", month:"Nov", quarter:"FY26 Q1", priority:"high", regions:["APAC"] },
+  { title:"I am a Boxer", network:"Local", date:"11/21", month:"Nov", quarter:"FY26 Q1", priority:"high", regions:["APAC"] },
+  { title:"Are You Sure? S2", network:"Local", date:"12/3", month:"Dec", quarter:"FY26 Q1", priority:"high", regions:["APAC"] },
+  { title:"Made in Korea S1", network:"Local", date:"12/24", month:"Dec", quarter:"FY26 Q1", priority:"high", regions:["APAC"] },
+  { title:"Playback: Una Somos Dos", network:"Local", date:"10/29", month:"Oct", quarter:"FY26 Q1", priority:"high", regions:["LATAM"] },
+  { title:"The Balloonist", network:"Local", date:"10/3", month:"Oct", quarter:"FY26 Q1", priority:"medium", regions:["EMEA"] },
+  { title:"To Cook A Bear", network:"Local", date:"10/15", month:"Oct", quarter:"FY26 Q1", priority:"medium", regions:["EMEA"] },
+  { title:"Entrepreneurs", network:"Local", date:"10/23", month:"Oct", quarter:"FY26 Q1", priority:"medium", regions:["EMEA"] },
+  { title:"Tron: Ares", network:"Theatrical", date:"10/10", month:"Oct", quarter:"FY26 Q1", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Deliver Me from Nowhere", network:"Theatrical", date:"10/24", month:"Oct", quarter:"FY26 Q1", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Predator: Badlands", network:"Theatrical", date:"11/7", month:"Nov", quarter:"FY26 Q1", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Zootopia 2", network:"Theatrical", date:"11/26", month:"Nov", quarter:"FY26 Q1", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Avatar 3", network:"Theatrical", date:"12/19", month:"Dec", quarter:"FY26 Q1", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Ella McCay", network:"Theatrical", date:"12/12", month:"Dec", quarter:"FY26 Q1", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Fantastic Four", network:"Pay 1", date:"11/5", month:"Nov", quarter:"FY26 Q1", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Freakier Friday", network:"Pay 1", date:"11/12", month:"Nov", quarter:"FY26 Q1", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"The Roses", network:"Pay 1", date:"11/20", month:"Nov", quarter:"FY26 Q1", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+
+  // FY26 Q2 (Jan–Mar)
+  { title:"Will Trent S4", network:"ABC", date:"1/6", month:"Jan", quarter:"FY26 Q2", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"The Rookie S8", network:"ABC", date:"1/6", month:"Jan", quarter:"FY26 Q2", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Scrubs Reboot", network:"ABC", date:"2/25", month:"Feb", quarter:"FY26 Q2", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"RJ Decker S1", network:"ABC", date:"3/4", month:"Mar", quarter:"FY26 Q2", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Wonder Man", network:"Marvel", date:"1/27", month:"Jan", quarter:"FY26 Q2", priority:"high", regions:["US"] },
+  { title:"Daredevil: Born Again S2", network:"Marvel", date:"3/24", month:"Mar", quarter:"FY26 Q2", priority:"medium", regions:["US"] },
+  { title:"Tell Me Lies S3", network:"Hulu", date:"1/13", month:"Jan", quarter:"FY26 Q2", priority:"high", regions:["US"] },
+  { title:"The Beauty S1", network:"Hulu", date:"1/21", month:"Jan", quarter:"FY26 Q2", priority:"low", regions:["US"] },
+  { title:"Paradise S2", network:"Hulu", date:"2/23", month:"Feb", quarter:"FY26 Q2", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"In The Blink of an Eye", network:"Hulu", date:"2/27", month:"Feb", quarter:"FY26 Q2", priority:"medium", regions:["US"] },
+  { title:"SLOMW S4", network:"Hulu", date:"3/12", month:"Mar", quarter:"FY26 Q2", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Love Overboard", network:"Hulu", date:"3/26", month:"Mar", quarter:"FY26 Q2", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Friends Like These", network:"Hulu", date:"3/5", month:"Mar", quarter:"FY26 Q2", priority:"medium", regions:["US"] },
+  { title:"Magicampers", network:"Hulu", date:"3/23", month:"Mar", quarter:"FY26 Q2", priority:"low", regions:["US"] },
+  { title:"Love Story: JFK & Carolyn Bessette", network:"FX", date:"2/12", month:"Feb", quarter:"FY26 Q2", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Pole to Pole with Will Smith", network:"NatGeo", date:"1/13", month:"Jan", quarter:"FY26 Q2", priority:"medium", regions:["US","EMEA","LATAM","AUNZ","CA"] },
+  { title:"The Tale of Silyan", network:"NatGeo", date:"1/9", month:"Jan", quarter:"FY26 Q2", priority:"medium", regions:["US","EMEA","LATAM","CA"] },
+  { title:"Ghost Elephants", network:"NatGeo", date:"3/8", month:"Mar", quarter:"FY26 Q2", priority:"low", regions:["US","EMEA","LATAM","AUNZ","CA"] },
+  { title:"Ariel S2", network:"DBT", date:"1/28", month:"Jan", quarter:"FY26 Q2", priority:"low", regions:["US"] },
+  { title:"Playdate with Winnie the Pooh S3", network:"DBT", date:"1/18", month:"Jan", quarter:"FY26 Q2", priority:"low", regions:["US"] },
+  { title:"DJ - Hey A.J.!", network:"DBT", date:"1/13", month:"Jan", quarter:"FY26 Q2", priority:"low", regions:["US"] },
+  { title:"The Doomies", network:"DBT", date:"2/13", month:"Feb", quarter:"FY26 Q2", priority:"medium", regions:["US"] },
+  { title:"Robogobo S2", network:"DBT", date:"2/17", month:"Feb", quarter:"FY26 Q2", priority:"medium", regions:["US"] },
+  { title:"D vs Z: Worlds Collide Concert", network:"DBT", date:"2/20", month:"Feb", quarter:"FY26 Q2", priority:"low", regions:["US"] },
+  { title:"Beddybyes S1", network:"DBT", date:"3/3", month:"Mar", quarter:"FY26 Q2", priority:"medium", regions:["US"] },
+  { title:"Hannahversary Special", network:"DBT", date:"3/24", month:"Mar", quarter:"FY26 Q2", priority:"low", regions:["US"] },
+  { title:"A Thousand Blows", network:"Local", date:"1/9", month:"Jan", quarter:"FY26 Q2", priority:"high", regions:["EMEA"] },
+  { title:"Battle of Fates", network:"Local", date:"2/11", month:"Feb", quarter:"FY26 Q2", priority:"high", regions:["APAC"] },
+  { title:"1814 Vienna Game", network:"Local", date:"3/18", month:"Mar", quarter:"FY26 Q2", priority:"low", regions:["EMEA"] },
+  { title:"Love", network:"Local", date:"3/25", month:"Mar", quarter:"FY26 Q2", priority:"low", regions:["EMEA"] },
+  { title:"If It's Tuesday, It's Murder", network:"Local", date:"3/31", month:"Mar", quarter:"FY26 Q2", priority:"low", regions:["EMEA","LATAM"] },
+  { title:"Tron 3", network:"Theatrical", date:"1/27", month:"Jan", quarter:"FY26 Q2", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Send Help", network:"Theatrical", date:"1/30", month:"Jan", quarter:"FY26 Q2", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Psycho Killer", network:"Theatrical", date:"2/20", month:"Feb", quarter:"FY26 Q2", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Ella McCay", network:"Theatrical", date:"2/5", month:"Feb", quarter:"FY26 Q2", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Predator: Badlands", network:"Theatrical", date:"2/12", month:"Feb", quarter:"FY26 Q2", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Hoppers", network:"Theatrical", date:"3/6", month:"Mar", quarter:"FY26 Q2", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Zootopia 2", network:"Theatrical", date:"3/11", month:"Mar", quarter:"FY26 Q2", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Deliver Me From Nowhere", network:"Pay 1", date:"1/23", month:"Jan", quarter:"FY26 Q2", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Tron 3", network:"Pay 1", date:"1/27", month:"Jan", quarter:"FY26 Q2", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Ella McCay", network:"Pay 1", date:"2/5", month:"Feb", quarter:"FY26 Q2", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Predator: Badlands", network:"Pay 1", date:"2/12", month:"Feb", quarter:"FY26 Q2", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Rental Family", network:"Pay 1", date:"2/18", month:"Feb", quarter:"FY26 Q2", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Is This Thing On?", network:"Pay 1", date:"3/20", month:"Mar", quarter:"FY26 Q2", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Testament of Ann Lee", network:"Pay 1", date:"3/31", month:"Mar", quarter:"FY26 Q2", priority:"other", regions:["EMEA","LATAM","APAC","AUNZ","CA"] },
+
+  // FY26 Q3 (Apr–Jun)
+  { title:"The Testaments S1", network:"Hulu", date:"4/8", month:"Apr", quarter:"FY26 Q3", priority:"high", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Malcolm in the Middle", network:"DBT", date:"4/10", month:"Apr", quarter:"FY26 Q3", priority:"high", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Welcome to Wrexham S5", network:"FX", date:"5/15", month:"May", quarter:"FY26 Q3", priority:"high", regions:["US","EMEA","LATAM","CA"] },
+  { title:"The Bear S5", network:"FX", date:"Jun TBC", month:"Jun", quarter:"FY26 Q3", priority:"high", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Mando & Grogu", network:"Theatrical", date:"5/22", month:"May", quarter:"FY26 Q3", priority:"high", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Toy Story 5", network:"Theatrical", date:"6/19", month:"Jun", quarter:"FY26 Q3", priority:"high", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Alice & Steve", network:"Local", date:"6/3", month:"Jun", quarter:"FY26 Q3", priority:"high", regions:["EMEA"] },
+  { title:"Rivals S2 (Part 1)", network:"Local", date:"5/15", month:"May", quarter:"FY26 Q3", priority:"high", regions:["EMEA"] },
+  { title:"Dear Killer Nannies", network:"Local", date:"4/1", month:"Apr", quarter:"FY26 Q3", priority:"high", regions:["LATAM"] },
+  { title:"Impuros S6", network:"Local", date:"5/1", month:"May", quarter:"FY26 Q3", priority:"high", regions:["LATAM"] },
+  { title:"Tokyo Revengers S3", network:"Local", date:"4/10", month:"Apr", quarter:"FY26 Q3", priority:"high", regions:["APAC"] },
+  { title:"Bullet-biting Doctor", network:"Local", date:"6/1", month:"Jun", quarter:"FY26 Q3", priority:"high", regions:["APAC"] },
+  { title:"Gold Land", network:"Local", date:"4/29", month:"Apr", quarter:"FY26 Q3", priority:"high", regions:["APAC"] },
+  { title:"Travis Japan Travel ARound the World", network:"Local", date:"4/10", month:"Apr", quarter:"FY26 Q3", priority:"high", regions:["APAC"] },
+  { title:"Not Suitable for Work S1", network:"Hulu", date:"Apr TBC", month:"Apr", quarter:"FY26 Q3", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Nikki Glaser: Good Girl", network:"Hulu", date:"4/24", month:"Apr", quarter:"FY26 Q3", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Vanderpump Villa S3", network:"Hulu", date:"Apr TBC", month:"Apr", quarter:"FY26 Q3", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Deli Boys S2", network:"Onyx", date:"Jun TBC", month:"Jun", quarter:"FY26 Q3", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Furious", network:"Hulu", date:"Jun TBC", month:"Jun", quarter:"FY26 Q3", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Lisa Ann Walter Special", network:"Hulu", date:"May TBC", month:"May", quarter:"FY26 Q3", priority:"medium", regions:["US"] },
+  { title:"Grandpa Charlie", network:"Hulu", date:"May TBC", month:"May", quarter:"FY26 Q3", priority:"medium", regions:["US"] },
+  { title:"Travis Barker: Louder Than Fear", network:"Hulu", date:"Jun TBC", month:"Jun", quarter:"FY26 Q3", priority:"medium", regions:["US"] },
+  { title:"Hannah Berner Special", network:"Hulu", date:"6/5", month:"Jun", quarter:"FY26 Q3", priority:"medium", regions:["US"] },
+  { title:"Star Wars: Maul Shadow Lord", network:"Lucasfilm", date:"4/6", month:"Apr", quarter:"FY26 Q3", priority:"medium", regions:["US"] },
+  { title:"Necaxa S2", network:"FX", date:"Apr TBC", month:"Apr", quarter:"FY26 Q3", priority:"medium", regions:["US"] },
+  { title:"Secrets of the Bees", network:"NatGeo", date:"4/1", month:"Apr", quarter:"FY26 Q3", priority:"medium", regions:["US","EMEA","LATAM","AUNZ","CA"] },
+  { title:"Tucci in Italy S2", network:"NatGeo", date:"5/11", month:"May", quarter:"FY26 Q3", priority:"medium", regions:["US","EMEA","LATAM","AUNZ","CA"] },
+  { title:"Best of the World (Antoni Porowski)", network:"NatGeo", date:"6/8", month:"Jun", quarter:"FY26 Q3", priority:"medium", regions:["US","EMEA","LATAM","AUNZ","CA"] },
+  { title:"Chilean Mine Disaster", network:"NatGeo", date:"6/25", month:"Jun", quarter:"FY26 Q3", priority:"medium", regions:["US","LATAM","CA"] },
+  { title:"Iron Man Y2", network:"DBT", date:"Jun TBC", month:"Jun", quarter:"FY26 Q3", priority:"medium", regions:["US"] },
+  { title:"Dragon Striker", network:"DBT", date:"6/9", month:"Jun", quarter:"FY26 Q3", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"4x20: Quick Hits", network:"Hulu", date:"4/20", month:"Apr", quarter:"FY26 Q3", priority:"low", regions:["US"] },
+  { title:"Pizza Movie", network:"Hulu", date:"4/3", month:"Apr", quarter:"FY26 Q3", priority:"low", regions:["US"] },
+  { title:"Stassi Says", network:"Freeform", date:"6/18", month:"Jun", quarter:"FY26 Q3", priority:"low", regions:["US"] },
+  { title:"Million Dollar Nannies S1", network:"Freeform", date:"May TBC", month:"May", quarter:"FY26 Q3", priority:"low", regions:["US"] },
+  { title:"The War Between Land & Sea", network:"DBT", date:"Jun TBC", month:"Jun", quarter:"FY26 Q3", priority:"low", regions:["US"] },
+  { title:"Sofia the First: Royal Magic", network:"DBT", date:"5/26", month:"May", quarter:"FY26 Q3", priority:"low", regions:["EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Perza", network:"Local", date:"5/1", month:"May", quarter:"FY26 Q3", priority:"low", regions:["EMEA"] },
+  { title:"World Wide Mafia", network:"Local", date:"4/1", month:"Apr", quarter:"FY26 Q3", priority:"low", regions:["EMEA"] },
+  { title:"Raising Chelsea", network:"Local", date:"4/3", month:"Apr", quarter:"FY26 Q3", priority:"low", regions:["EMEA"] },
+  { title:"Devil Wears Prada 2", network:"Theatrical", date:"5/1", month:"May", quarter:"FY26 Q3", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Ready or Not 2", network:"Theatrical", date:"4/10", month:"Apr", quarter:"FY26 Q3", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Send Help", network:"Theatrical", date:"4/30", month:"Apr", quarter:"FY26 Q3", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Punisher Special", network:"Marvel", date:"5/12", month:"May", quarter:"FY26 Q3", priority:"other", regions:["US"] },
+  { title:"Hoppers", network:"Pay 1", date:"6/3", month:"Jun", quarter:"FY26 Q3", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Avatar 3", network:"Pay 1", date:"6/24", month:"Jun", quarter:"FY26 Q3", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Send Help", network:"Pay 1", date:"4/30", month:"Apr", quarter:"FY26 Q3", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Ready or Not 2", network:"Pay 1", date:"7/9", month:"Apr", quarter:"FY26 Q3", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Zootopia 2", network:"Pay 1", date:"3/11", month:"Apr", quarter:"FY26 Q3", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+
+  // FY27 Q1 (Jul–Sep)
+  { title:"Descendants: Wicked Wonderland", network:"DBT", date:"7/17", month:"Jul", quarter:"FY27 Q1", priority:"high", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Camp Rock 3", network:"DBT", date:"8/14", month:"Aug", quarter:"FY27 Q1", priority:"high", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Coven Academy S1", network:"DBT", date:"9/9", month:"Sep", quarter:"FY27 Q1", priority:"high", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"It's Always Sunny S18", network:"FX", date:"Aug TBC", month:"Aug", quarter:"FY27 Q1", priority:"high", regions:["US","EMEA","LATAM","CA"] },
+  { title:"Unt. Snowfall Spin-off", network:"FX", date:"Sept TBC", month:"Sep", quarter:"FY27 Q1", priority:"high", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Moana", network:"Theatrical", date:"7/10", month:"Jul", quarter:"FY27 Q1", priority:"high", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"A Shop of Killers S2", network:"Local", date:"7/22", month:"Jul", quarter:"FY27 Q1", priority:"high", regions:["APAC","EMEA"] },
+  { title:"Caldas", network:"Local", date:"7/1", month:"Jul", quarter:"FY27 Q1", priority:"high", regions:["LATAM"] },
+  { title:"Tarã", network:"Local", date:"7/24", month:"Jul", quarter:"FY27 Q1", priority:"high", regions:["LATAM"] },
+  { title:"The Rooneys", network:"Local", date:"9/1", month:"Sep", quarter:"FY27 Q1", priority:"high", regions:["EMEA"] },
+  { title:"City of Blood", network:"Local", date:"9/9", month:"Sep", quarter:"FY27 Q1", priority:"high", regions:["EMEA"] },
+  { title:"Made in Korea S2", network:"Local", date:"9/10", month:"Sep", quarter:"FY27 Q1", priority:"high", regions:["APAC"] },
+  { title:"Gustav Maier's Strange Story", network:"Local", date:"8/1", month:"Aug", quarter:"FY27 Q1", priority:"high", regions:["EMEA"] },
+  { title:"Flex X Cop S2", network:"Local", date:"7/14", month:"Jul", quarter:"FY27 Q1", priority:"high", regions:["APAC"] },
+  { title:"American Horror Story S13", network:"FX", date:"Sept TBC", month:"Sep", quarter:"FY27 Q1", priority:"high", regions:["US","EMEA","LATAM","CA"] },
+  { title:"Phony", network:"Hulu", date:"Jul TBC", month:"Jul", quarter:"FY27 Q1", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Chad Powers S2", network:"Hulu", date:"Sept TBC", month:"Sep", quarter:"FY27 Q1", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Futurama S14", network:"Hulu", date:"Aug TBC", month:"Aug", quarter:"FY27 Q1", priority:"medium", regions:["US"] },
+  { title:"The Shards", network:"FX", date:"Aug TBC", month:"Aug", quarter:"FY27 Q1", priority:"medium", regions:["US","EMEA","LATAM","CA"] },
+  { title:"Cry Wolf", network:"FX", date:"Aug TBC", month:"Aug", quarter:"FY27 Q1", priority:"medium", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Adults S2", network:"FX", date:"Jul TBC", month:"Jul", quarter:"FY27 Q1", priority:"medium", regions:["US","EMEA","LATAM","CA"] },
+  { title:"Sharks Up Close w/ Bertie Gregory", network:"NatGeo", date:"7/5", month:"Jul", quarter:"FY27 Q1", priority:"medium", regions:["US","EMEA","LATAM","AUNZ","CA"] },
+  { title:"Time and Water", network:"NatGeo", date:"7/18", month:"Jul", quarter:"FY27 Q1", priority:"medium", regions:["US","EMEA","LATAM","AUNZ","CA"] },
+  { title:"Surviving Pompeii with Tom Hiddleston", network:"NatGeo", date:"7/23", month:"Jul", quarter:"FY27 Q1", priority:"medium", regions:["US","EMEA","LATAM","AUNZ","CA"] },
+  { title:"9/11: Reunited", network:"NatGeo", date:"8/22", month:"Aug", quarter:"FY27 Q1", priority:"medium", regions:["US","EMEA","LATAM","CA"] },
+  { title:"Lion", network:"NatGeo", date:"8/20", month:"Aug", quarter:"FY27 Q1", priority:"medium", regions:["US","EMEA","LATAM","AUNZ","CA"] },
+  { title:"Meet the Planets", network:"NatGeo", date:"9/3", month:"Sep", quarter:"FY27 Q1", priority:"medium", regions:["US","EMEA","LATAM","CA"] },
+  { title:"Super Scam Me", network:"NatGeo", date:"9/17", month:"Sep", quarter:"FY27 Q1", priority:"medium", regions:["US","EMEA","LATAM","CA"] },
+  { title:"Spidey & His Amazing Friends S5", network:"DBT", date:"7/16", month:"Jul", quarter:"FY27 Q1", priority:"medium", regions:["US"] },
+  { title:"Big City Greens S5", network:"DBT", date:"8/22", month:"Aug", quarter:"FY27 Q1", priority:"medium", regions:["US"] },
+  { title:"Miraculous Ladybug S7", network:"DBT", date:"Sept TBC", month:"Sep", quarter:"FY27 Q1", priority:"medium", regions:["US"] },
+  { title:"ZOMBIES: The Reanimated Series S2", network:"DBT", date:"9/13", month:"Sep", quarter:"FY27 Q1", priority:"medium", regions:["US"] },
+  { title:"Jamie Foxx Stand Up Special", network:"Hulu", date:"Aug TBC", month:"Aug", quarter:"FY27 Q1", priority:"medium", regions:["US"] },
+  { title:"The Billionaire Boys Club", network:"Hulu", date:"Sept TBC", month:"Sep", quarter:"FY27 Q1", priority:"medium", regions:["US"] },
+  { title:"Clown Panic", network:"Hulu", date:"Sept TBC", month:"Sep", quarter:"FY27 Q1", priority:"medium", regions:["US"] },
+  { title:"King of the Hill S15", network:"Hulu", date:"Jul TBC", month:"Jul", quarter:"FY27 Q1", priority:"medium", regions:["US"] },
+  { title:"Reasonable Doubt S4", network:"Onyx", date:"Sept TBC", month:"Sep", quarter:"FY27 Q1", priority:"medium", regions:["US"] },
+  { title:"Project Runway S22", network:"Freeform", date:"7/10", month:"Jul", quarter:"FY27 Q1", priority:"medium", regions:["US"] },
+  { title:"Pupstruction S3", network:"DBT", date:"9/15", month:"Sep", quarter:"FY27 Q1", priority:"low", regions:["US"] },
+  { title:"Toy Story 5", network:"Pay 1", date:"9/23", month:"Sep", quarter:"FY27 Q1", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Ready or Not 2", network:"Pay 1", date:"7/9", month:"Jul", quarter:"FY27 Q1", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Devil Wears Prada 2", network:"Pay 1", date:"8/7", month:"Aug", quarter:"FY27 Q1", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"Mando & Grogu", network:"Pay 1", date:"9/9", month:"Sep", quarter:"FY27 Q1", priority:"other", regions:["US","EMEA","LATAM","APAC","AUNZ","CA"] },
+  { title:"VisionQuest", network:"Marvel", date:"10/14", month:"Sep", quarter:"FY27 Q1", priority:"other", regions:["US"] },
+];
+
+const QUARTERS = [
+  { id:"FY26 Q1", months:["Oct","Nov","Dec"] },
+  { id:"FY26 Q2", months:["Jan","Feb","Mar"] },
+  { id:"FY26 Q3", months:["Apr","May","Jun"] },
+  { id:"FY27 Q1", months:["Jul","Aug","Sep"] },
+];
+
+let filters = { region:"ALL", priority:"ALL", network:"ALL" };
+
+function networkLabel(n) { return n === "DBT" ? "Disney+" : n; }
+
+function matchesFilters(t) {
+  const q = document.getElementById("search-input").value.toLowerCase();
+  if (q && !t.title.toLowerCase().includes(q) && !t.network.toLowerCase().includes(q)) return false;
+  if (filters.region !== "ALL" && !t.regions.includes(filters.region)) return false;
+  if (filters.priority !== "ALL" && t.priority !== filters.priority) return false;
+  if (filters.network !== "ALL" && t.network !== filters.network) return false;
+  return true;
+}
+
+function setFilter(type, value, el) {
+  filters[type] = value;
+  document.querySelectorAll(`[data-filter="${type}"]`).forEach(b => b.classList.remove("active","active-accent"));
+  el.classList.add(type === "region" ? "active-accent" : "active");
+  applyFilters();
+}
+
+function setView(view) {
+  document.getElementById("calendar-view").style.display = view === "calendar" ? "block" : "none";
+  document.getElementById("table-view").style.display   = view === "table"    ? "block" : "none";
+  document.getElementById("btn-calendar").classList.toggle("active", view === "calendar");
+  document.getElementById("btn-table").classList.toggle("active",    view === "table");
+}
+
+function applyFilters() {
+  const f = TITLES.filter(matchesFilters);
+  document.getElementById("stat-total").textContent  = f.length;
+  document.getElementById("stat-high").textContent   = f.filter(t => t.priority === "high").length;
+  document.getElementById("stat-med").textContent    = f.filter(t => t.priority === "medium").length;
+  document.getElementById("stat-low").textContent    = f.filter(t => t.priority === "low").length;
+  document.getElementById("stat-other").textContent  = f.filter(t => t.priority === "other").length;
+  document.getElementById("total-count").textContent = f.length + " titles";
+  renderCalendar(f);
+  renderTable(f);
+}
+
+function renderCalendar(filtered) {
+  const cv = document.getElementById("calendar-view");
+  cv.innerHTML = "";
+  QUARTERS.forEach(q => {
+    const qf = filtered.filter(t => t.quarter === q.id);
+    const sec = document.createElement("div");
+    sec.className = "quarter-section";
+    sec.innerHTML = `
+      <div class="quarter-header">
+        <div class="quarter-label">${q.id}</div>
+        <div class="quarter-months">${q.months[0]} – ${q.months[2]}</div>
+        <div class="quarter-line"></div>
+        <div class="quarter-count">${qf.length} title${qf.length !== 1 ? "s" : ""}</div>
+      </div>
+      <div class="month-grid" id="mg-${q.id.replace(/\s/g,"-")}"></div>
+    `;
+    cv.appendChild(sec);
+    const grid = sec.querySelector(`#mg-${q.id.replace(/\s/g,"-")}`);
+    q.months.forEach(m => {
+      const mf = qf.filter(t => t.month === m);
+      const col = document.createElement("div");
+      col.className = "month-col";
+      const cards = mf.length
+        ? mf.map(t => `
+            <div class="title-card priority-${t.priority}">
+              <div class="card-top">
+                <div class="card-title">${t.title}</div>
+                <div class="card-date">${t.date}</div>
+              </div>
+              <div class="card-meta">
+                <span class="network-tag">${networkLabel(t.network)}</span>
+                <div class="region-tags">${t.regions.map(r=>`<span class="region-tag">${r}</span>`).join("")}</div>
+              </div>
+            </div>`).join("")
+        : `<div class="empty-state">No titles match filters</div>`;
+      col.innerHTML = `<div class="month-header">${m}</div><div class="month-body">${cards}</div>`;
+      grid.appendChild(col);
+    });
+  });
+}
+
+function renderTable(filtered) {
+  document.getElementById("table-body").innerHTML = filtered.map(t => `
+    <tr>
+      <td style="font-weight:600">${t.title}</td>
+      <td style="color:var(--muted)">${networkLabel(t.network)}</td>
+      <td style="color:var(--muted)">${t.quarter}</td>
+      <td style="color:var(--muted);white-space:nowrap">${t.month} ${t.date}</td>
+      <td><span class="priority-badge badge-${t.priority}">${t.priority === "other" ? "Studios/Pay1" : t.priority.charAt(0).toUpperCase()+t.priority.slice(1)}</span></td>
+      <td><div class="region-tags">${t.regions.map(r=>`<span class="region-tag">${r}</span>`).join("")}</div></td>
+    </tr>`).join("") ||
+    `<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--muted)">No titles match the current filters</td></tr>`;
+}
+
+applyFilters();
+</script>
+</body>
+</html>
